@@ -78,12 +78,18 @@ class _paymentScreenState extends State<paymentScreen> {
     String x = arguments;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'fifth', arguments: x);
-              },
-              child: Icon(Icons.home))
+            onPressed: () {
+              Navigator.pushNamed(context, 'fifth', arguments: x);
+            },
+            child: Icon(Icons.home),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blueGrey,
+              onPrimary: Colors.white,
+            ),
+          ),
         ],
         title: Text(
           'RAZORPAY',
@@ -100,7 +106,7 @@ class _paymentScreenState extends State<paymentScreen> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.tealAccent[700],
+                color: Colors.blueGrey,
               ),
               child: Center(
                 child: Text(
@@ -156,7 +162,7 @@ class _paymentScreenState extends State<paymentScreen> {
           ],
         ),
       ),
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -204,21 +210,3 @@ class _paymentScreenState extends State<paymentScreen> {
     );
   }
 }
-
-// Column(
-// children: [
-// Center(
-// child: Text('HELLO'),
-// ),
-// ElevatedButton(
-// onPressed: () {
-// FirebaseAuth.instance.signOut().then((value) {
-// Navigator.pushReplacementNamed(context, 'first');
-// }).catchError((e) {
-// print(e);
-// });
-// },
-// child: Text('LOG OUT'),
-// ),
-// ],
-// );
