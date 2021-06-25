@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:task3/sharedprefs.dart';
 import 'package:task3/userManagement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:task3/userManagement.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -207,6 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: ElevatedButton(
                         child: Text('Register'),
                         onPressed: () {
+                          sharedPrefs.instance.setStringValue('displayName', _displayName);
                           FirebaseAuth.instance
                               .createUserWithEmailAndPassword(
                                   email: _email, password: _password)

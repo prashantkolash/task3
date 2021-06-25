@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:task3/sharedprefs.dart';
 import 'package:toast/toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -12,6 +13,14 @@ class paymentScreen extends StatefulWidget {
 class _paymentScreenState extends State<paymentScreen> {
   Razorpay _razorpay;
   String _amount;
+  var savedName = '';
+  _paymentScreenState() {
+    sharedPrefs.instance
+        .getStringValue('displayName')
+        .then((value) => setState(() {
+              savedName = value;
+            }));
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -93,9 +102,14 @@ class _paymentScreenState extends State<paymentScreen> {
               decoration: BoxDecoration(
                 color: Colors.tealAccent[700],
               ),
-              child: Icon(
-                Icons.android,
-                size: 50,
+              child: Center(
+                child: Text(
+                  savedName,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
             ListTile(
